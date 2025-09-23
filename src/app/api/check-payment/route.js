@@ -1,0 +1,23 @@
+import { NextResponse } from 'next/server';
+import { DBConnect } from '@/lib/db';
+import Payment from '@/models/payment';
+
+export async function GET(req) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
+
+    await DBConnect();
+
+    const payment = await Payment.findById(id);
+    if (!payment) {
+        console.log("Payment not found")
+      return NextResponse.json({error : "payment not found"} ,{ status: 404 });
+    }
+  console.log(payment)
+    return NextResponse.json({ paymentStatus: payment.done });
+  } catch (err) {
+    console.error('Error checking payment:', err);
+    return NextResponse.json({error: "Server error"}, { status: 500 });
+  }
+}
