@@ -16,7 +16,6 @@ export const getUser = async (username) => {
 
     return data;
   } catch (error) {
-    console.log("Error getting user data", error);
     notFound();
   }
 };
@@ -105,6 +104,12 @@ export function getPublicIdFromUrl(url) {
   const cleanUrl = url.split("?")[0];
   const parts = cleanUrl.split("/upload/");
   if (parts.length < 2) return null;
+  const segments = parts[1].split("/");
+  // Remove version segment if present (like "v1759331497")
+  if (/^v[0-9]+$/.test(segments[0])) {
+    segments.shift();
+  }
 
-  return parts[1].replace(/\.[^/.]+$/, "");
+  // Join all remaining parts, then strip extension
+  return segments.join("/").replace(/\.[^/.]+$/, "");
 }

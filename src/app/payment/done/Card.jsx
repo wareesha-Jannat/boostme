@@ -7,7 +7,7 @@ import { useWindowSize } from "react-use";
 const Card = ({ data, username }) => {
   const [mounted, setMounted] = useState(false);
   const { width, height } = useWindowSize();
-  console.log(data);
+
   useEffect(() => {
     setMounted(true);
   }, []);

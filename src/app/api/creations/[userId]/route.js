@@ -37,7 +37,6 @@ export async function GET(req, { params }) {
       updatedAt: c.updatedAt.toISOString(), // Converts Date → ISO String
     }));
 
-    console.log(safeCreations, nextCursor);
     return NextResponse.json({
       creations: safeCreations,
       nextCursor,

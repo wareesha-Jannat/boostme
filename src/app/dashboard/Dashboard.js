@@ -56,7 +56,7 @@ const Dashboard = ({ user }) => {
         throw new Error(res.error);
       }
     } catch (error) {
-      console.log(error);
+     
       toast.error("Could not update profile, try again");
     }
   };

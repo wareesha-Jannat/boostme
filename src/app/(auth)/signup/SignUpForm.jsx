@@ -26,7 +26,7 @@ const SignUpForm = () => {
   });
 
   async function onSubmit(values) {
-    console.log("data from signup", values);
+    
     try {
       const data = await signup(values);
       if (data.error) {

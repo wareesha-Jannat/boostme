@@ -47,7 +47,7 @@ export async function signup(credentials) {
       success: true,
     };
   } catch (error) {
-    console.log(error);
+  
     return { error: "Internal server error" };
   }
 }
@@ -95,13 +95,12 @@ export const updateProfile = async (formData) => {
 
     // Remove email if present (we don't want to allow update)
 
-    console.log("data before db update", formValues);
+   
     // Update user in DB
 
     const updated = await User.findByIdAndUpdate(userId, formValues, {
       new: true,
-    })
-      .select("-createdAt -updatedAt -__v")
+    }).select("-createdAt -updatedAt -__v")
       .lean();
 
     updated._id = updated._id.toString();
@@ -149,15 +148,16 @@ export async function DeleteUser(userId) {
     await User.findByIdAndDelete(userId);
     await Payment.deleteMany({ to_user: userId });
     await Creation.deleteMany({ creatorId: userId });
-    console.log(publicIds, "publicids from delete user");
+   
     if (publicIds.length > 0) {
       await cloudinary.api.delete_resources(publicIds);
+     
     }
     return {
       success: true,
     };
   } catch (error) {
-    console.log(error);
+  
     return {
       error: "Internal server error",
     };

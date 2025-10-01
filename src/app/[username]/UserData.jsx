@@ -8,14 +8,13 @@ const UserData = ({ user }) => {
     <>
       <div className="w-full flex flex-col items-center justify-center relative ">
         <div className="relative w-full h-[400px]">
-          {" "}
-          {/* Set container dimensions */}
+      
           <Image
             src={user.coverpic}
             alt="User cover Picture"
-            fill // Makes image fill the parent container
+            fill 
             sizes="100vw"
-            className="object-cover rounded-md" // You can use object-cover or object-contain
+            className="object-cover rounded-md" 
             priority
           />
         </div>

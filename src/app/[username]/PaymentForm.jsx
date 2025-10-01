@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const PaymentForm = ({ userId }) => {
   const [paymentForm, setPaymentForm] = useState({
@@ -38,7 +39,7 @@ const PaymentForm = ({ userId }) => {
         throw new Error("No redirect URL received.");
       }
     } catch (error) {
-      console.error("Failed to send initiate request", error);
+      toast.error("Failed to send initiate request");
     }
   };
 

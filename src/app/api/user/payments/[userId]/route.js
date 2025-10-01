@@ -18,7 +18,10 @@ export async function GET(req, { params }) {
 
     await DBConnect();
 
-    const query = { to_user: userId, done: true };
+    const query = {
+      to_user: new mongoose.Types.ObjectId(String(userId)),
+      done: true,
+    };
     if (cursor) {
       query._id = { $lt: new mongoose.Types.ObjectId(String(cursor)) };
     }
@@ -32,15 +35,8 @@ export async function GET(req, { params }) {
     const nextCursor = hasMore ? payments[pageSize]._id.toString() : null;
     const finalPayments = hasMore ? payments.slice(0, pageSize) : payments;
 
-    const safePayments = finalPayments.map((p) => ({
-      ...p,
-      _id: p._id.toString(), // Converts ObjectId → String
-      to_user: p.to_user.toString(), // Converts ObjectId → String
-      createdAt: p.createdAt.toISOString(), // Converts Date → ISO String
-    }));
-    console.log(safePayments, nextCursor);
     return NextResponse.json({
-      payments: safePayments,
+      payments: JSON.parse(JSON.stringify(finalPayments)),
       nextCursor,
     });
   } catch (error) {

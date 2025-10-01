@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { useQueryClient } from "@tanstack/react-query";

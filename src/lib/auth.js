@@ -21,9 +21,9 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials) {
-        console.log("credentials in auth", credentials);
+        
         if (credentials === null) {
-          console.log("credentials null");
+      
           throw new CustomError("Please Provide Credentials");
         }
         try {
@@ -31,13 +31,11 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
           const user = await User.findOne({ email: credentials.email })
             .select("password name email ")
             .lean();
-          console.log(user);
+       
 
           if (user) {
             if (!user.password) {
-              console.log(
-                "User exists but has no password - OAuth account only"
-              );
+             
               throw new CustomError(
                 "You signed In through google please try that method"
               );
@@ -53,15 +51,15 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                 email: user.email,
               };
             } else {
-              console.log("password not match");
+             
               throw new CustomError("Invalid Credentials");
             }
           } else {
-            console.log("user not found");
+            
             throw new CustomError("User not found");
           }
         } catch (error) {
-          console.log("Invlaid credentials");
+        
           throw new CustomError(error.message);
         }
       },

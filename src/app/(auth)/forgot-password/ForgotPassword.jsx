@@ -20,7 +20,7 @@ const ForgotPassword = () => {
   });
 
   async function onSubmit(values) {
-    console.log("data from forgot password", values);
+   
     try {
       const data = await ResetPasswordLink(values);
       if (data.error) {
@@ -30,7 +30,7 @@ const ForgotPassword = () => {
         reset();
       }
     } catch (error) {
-      console.log(error);
+     
       toast.error("something went wrong");
     }
   }

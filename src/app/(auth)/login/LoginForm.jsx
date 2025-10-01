@@ -14,7 +14,7 @@ const LoginForm = () => {
     try {
       const formData = new FormData(e.currentTarget);
       const response = await CredentialsLogin(formData);
-      console.log("response from credentials login", response);
+   
       if (response.error) {
         toast.error(response.error);
       } else {

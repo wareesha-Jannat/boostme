@@ -7,7 +7,6 @@ const AllPayments = ({ userId }) => {
   const {
     data,
     isFetchingNextPage,
-    isFetching,
     hasNextPage,
     fetchNextPage,
     status,

@@ -1,13 +1,13 @@
 "use server";
 
 import { auth } from "@/lib/auth";
+import cloudinary from "@/lib/cloudinary";
 import { DBConnect } from "@/lib/db";
 import { getPublicIdFromUrl, uploadToCloudinary } from "@/lib/utils";
 import { addCreationSchema } from "@/lib/validation";
 import Creation from "@/models/creations";
 
 export async function SubmitCreation({ values, coverImage, creationId }) {
-  console.log(values);
   const session = await auth();
   if (!session) {
     return {
@@ -18,7 +18,7 @@ export async function SubmitCreation({ values, coverImage, creationId }) {
     await DBConnect();
 
     const result = addCreationSchema.safeParse(values);
-    console.log(result);
+
     if (!result.success) {
       return {
         error: "invalid input",
@@ -81,7 +81,6 @@ export async function SubmitCreation({ values, coverImage, creationId }) {
       newCreation,
     };
   } catch (error) {
-    console.log(error);
     return {
       error: "internal server error",
     };
@@ -104,16 +103,16 @@ export async function DeleteCreation(creationId) {
       };
     }
     if (result.coverImage) {
-      await cloudinary.uploader.destroy(getPublicIdFromUrl(result.coverImage));
+      const id = getPublicIdFromUrl(result.coverImage);
+
+      await cloudinary.uploader.destroy(id);
     }
 
-    console.log(result.toObject());
     return {
       success: true,
       deletedCreation: JSON.parse(JSON.stringify(result)),
     };
   } catch (error) {
-    console.log(error);
     return {
       error: "Internal server error, try again later",
     };

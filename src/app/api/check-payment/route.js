@@ -11,10 +11,10 @@ export async function GET(req) {
 
     const payment = await Payment.findById(id);
     if (!payment) {
-        console.log("Payment not found")
+     
       return NextResponse.json({error : "payment not found"} ,{ status: 404 });
     }
-  console.log(payment)
+
     return NextResponse.json({ paymentStatus: payment.done });
   } catch (err) {
     console.error('Error checking payment:', err);

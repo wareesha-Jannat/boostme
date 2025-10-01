@@ -11,12 +11,12 @@ import nodemailer from "nodemailer";
 import bcrypt from "bcrypt";
 
 export async function Login() {
-  console.log("inside Login server action");
+
   await signIn("google", { redirectTo: "/dashboard" });
 }
 
 export async function Logout() {
-  console.log("inside Logout server action");
+ 
   await signOut({ redirectTo: "/" });
 }
 
@@ -27,10 +27,10 @@ export async function CredentialsLogin(formData) {
       password: formData.get("password"),
       redirect: false,
     });
-    console.log(response);
+   
     return response;
   } catch (error) {
-    console.log(error);
+   
     return {
       error: error.message,
     };
@@ -84,7 +84,7 @@ export async function ResetPasswordLink(values) {
       success: true,
     };
   } catch (error) {
-    console.log(error);
+   
     return {
       error: "Something went wrong. Please try again",
     };
@@ -128,7 +128,7 @@ export async function ChangePassword(values, token) {
       success: true,
     };
   } catch (error) {
-    console.log(error);
+ 
     return {
       error: "Something went wrong. Please try again",
     };

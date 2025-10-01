@@ -27,7 +27,6 @@ const ResetPassword = () => {
   });
 
   async function onSubmit(values) {
-    console.log("data from forgot password", values);
     try {
       const data = await ChangePassword(values, token);
       if (data.error) {

@@ -27,8 +27,12 @@ export default function CropImageDialog({
           <Cropper
             src={src}
             aspectRatio={cropAspectRatio}
-            guides={false}
-            zoomable={false}
+            guides={true}
+            zoomable={true}
+            scalable={true}
+            movable={true}
+            dragMode="move"
+            viewMode={1} // restrict crop box inside image
             ref={cropperRef}
             className="mx-auto max-h-[60vh] w-full"
           />
