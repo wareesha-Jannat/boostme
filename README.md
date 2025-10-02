@@ -64,12 +64,8 @@ npm install
 ```
 
 3. Start the development server:
-
-
-    ```bash
-
-npm run dev
-
+ ```bash
+ npm run dev
 ```
 
 ## Test Account
@@ -90,4 +86,3 @@ Use the following credentials to explore the app :
 
 -<a href="https://storyset.com/">Illustrations by Storyset</a>
 
-```
