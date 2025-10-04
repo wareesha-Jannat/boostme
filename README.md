@@ -36,9 +36,29 @@ Creators showcase their work, and fans explore, connect, and provide support.
 ### Homepage
 
 ![BoostMe Homepage](./public/screenshots/homepage.PNG)
+
+### Login
+
 ![BoostMe Login](./public/screenshots/login-page.PNG)
+
+### Dashboard
+
 ![BoostMe Dashboard](./public/screenshots/dashboard.PNG)
+
+### User Page
+
 ![BoostMe User page](./public/screenshots/user-page.PNG)
+
+### Payments
+
+![BoostMe Payments](./public/screenshots/payments.PNG)
+
+### Creations
+
+![BoostMe User page](./public/screenshots/creations.PNG)
+
+### Payment Done
+
 ![BoostMe Payment done](./public/screenshots/payment-done.PNG)
 
 ## 🛠️ Tech Stack
