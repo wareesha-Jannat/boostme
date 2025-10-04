@@ -4,6 +4,7 @@ import { CredentialsLogin } from "@/actions/authentication";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Image from "next/image";
+import { getSession } from "next-auth/react";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -14,14 +15,15 @@ const LoginForm = () => {
     try {
       const formData = new FormData(e.currentTarget);
       const response = await CredentialsLogin(formData);
-   
+
       if (response.error) {
         toast.error(response.error);
       } else {
+        await getSession();
         router.push("/dashboard");
       }
     } catch (error) {
-      console.error(error);
+    
       toast.error("something went wrong");
     }
   };

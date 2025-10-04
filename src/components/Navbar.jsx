@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
-import {  useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { useQueryClient } from "@tanstack/react-query";
@@ -60,7 +60,7 @@ const Navbar = () => {
                     }, 3000)
                   }
                 >
-                  {session.user.name || session.user.username}
+                  {session?.user?.name || session.user.username}
                   <svg
                     className="w-2.5 h-2.5 ms-3"
                     aria-hidden="true"

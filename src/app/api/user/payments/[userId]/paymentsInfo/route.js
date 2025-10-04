@@ -29,7 +29,7 @@ export async function GET(req, { params }) {
       totalAmount: result.totalAmount,
     });
   } catch (error) {
-    console.error("Payments Info Api Error:", error);
+  
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }

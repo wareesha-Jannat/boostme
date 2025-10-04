@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import ReactQueryProvider from "./ReactQueryProvider";
 import { auth } from "@/lib/auth";
+import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: {
@@ -20,7 +21,10 @@ export default async function RootLayout({ children }) {
       <body>
         <ReactQueryProvider>
           <SessionWrapper session={session}>
-            <div className="min-h-[100dvh] bg-black ">{children}</div>
+            <div className="min-h-[100dvh] bg-aurora">
+              <Navbar />
+              {children}
+            </div>
 
             <ToastContainer />
           </SessionWrapper>

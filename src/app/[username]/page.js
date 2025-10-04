@@ -4,7 +4,6 @@ import { getUser } from "@/lib/utils";
 import UserData from "./UserData";
 import AllPayments from "./AllPayments";
 import PaymentForm from "./PaymentForm";
-import Navbar from "@/components/Navbar";
 
 import AllCreations from "@/components/AllCreations";
 import Footer from "@/components/Footer";
@@ -15,7 +14,7 @@ export async function generateMetaData({ params }) {
   const { username } = await params;
   const user = await getData(username);
   return {
-    title: `${user.name || user.username}`,
+    title: `${user?.name || user?.username}`,
   };
 }
 
@@ -26,8 +25,7 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <Navbar />
-      <main className="bg-aurora min-h-[100dvh] pt-15 overflow-x-hidden  ">
+      <main className=" pt-15 overflow-x-hidden scroll-stable ">
         <div className="max-w-7xl mx-auto">
           <UserData user={user} />
 
@@ -37,8 +35,8 @@ export default async function Page({ params }) {
               <h2 className="font-bold mb-5 text-slate-400 text-[22px] ">
                 Payments
               </h2>
-              <div className="overflow-y-auto max-h-[70vh] flex flex-col">
-                <AllPayments userId={user._id.toString()} />
+              <div className="overflow-y-auto max-h-[70vh] flex flex-col scroll-stable">
+                <AllPayments userId={user?._id.toString()} />
               </div>
             </div>
             {/* Payment */}
@@ -46,14 +44,14 @@ export default async function Page({ params }) {
               <h2 className="font-bold mb-5 text-slate-400 text-[22px] ">
                 Make a payment
               </h2>
-              <PaymentForm userId={user._id.toString()} />
+              <PaymentForm userId={user?._id.toString()} />
             </div>
           </div>
           <div className="flex flex-col gap-5 w-[80%] mx-auto ">
             <h3 className="bg-gray-900 text-white text-fluid-md text-center py-2 mb-3 mt-9 rounded-2xl">
               User Creations
             </h3>
-            <AllCreations showActions={false} userId={user._id.toString()} />
+            <AllCreations showActions={false} userId={user?._id.toString()} />
           </div>
         </div>
       </main>

@@ -40,7 +40,7 @@ export async function GET(req, { params }) {
       nextCursor,
     });
   } catch (error) {
-    console.error("Payments API Error:", error);
+   
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }

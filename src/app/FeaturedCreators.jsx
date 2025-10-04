@@ -14,7 +14,7 @@ const FeaturedCreators = ({ creators }) => {
             className="bg-gray-900 rounded-2xl shadow-md hover:shadow-lg p-5 flex flex-col items-center text-center  w-[280px] h-[280px] gap-2 hover:scale-105 duration-300 transition-transform"
           >
             <Image
-              src={creator.profilepic || "/default-avatar.png"}
+              src={creator.profilepic || "/avatar-placeholder.png"}
               alt={creator.username}
               width={80}
               height={80}
@@ -22,7 +22,7 @@ const FeaturedCreators = ({ creators }) => {
             />
             <h4 className="text-lg font-semibold">{creator.username}</h4>
             <div>
-              <ReadMore text={creator.bio} maxLength={80} />
+              <ReadMore text={creator.bio || "No bio yet"} maxLength={80} />
             </div>
             <a
               href={`/${creator.username}`}

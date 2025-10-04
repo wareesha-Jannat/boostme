@@ -17,7 +17,7 @@ export async function GET(req) {
 
     return NextResponse.json({ paymentStatus: payment.done });
   } catch (err) {
-    console.error('Error checking payment:', err);
+ 
     return NextResponse.json({error: "Server error"}, { status: 500 });
   }
 }

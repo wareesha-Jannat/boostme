@@ -28,24 +28,26 @@ export async function POST(req) {
     const payfastData = {
       merchant_id: accountHolder.payfastid,
       merchant_key: accountHolder.payfastsecret,
-      return_url: `http://localhost:3000/payment/done?id=${oid}&username=${encodeURIComponent(
+      return_url: `${
+        process.env.NEXT_PUBLIC_BASE_URL
+      }/payment/done?id=${oid}&username=${encodeURIComponent(
         accountHolder.username
       )}`, //urls for success and faliure page
       //   cancel_url: 'http://localhost:3000/payment/failure',
-      notify_url: "https://7cdf62f8a98d.ngrok-free.app/api/payfast/ipn", // url to handle process after request completion
+      notify_url: `${NEXT_PUBLIC_BASE_URL}/api/payfast/ipn`, // url to handle process after request completion
       name_first: name,
       email_address: "test@example.com",
       amount,
       item_name: `Support from ${name}`,
       custom_str1: message,
-      custom_str2: oid, // this is your order ID
+      custom_str2: oid, // this is  order ID
     };
 
     const query = qs.stringify(payfastData);
     const redirectUrl = `https://sandbox.payfast.co.za/eng/process?${query}`;
     return NextResponse.json({ url: redirectUrl });
   } catch (error) {
-    console.error("API error:", error);
+   
     return NextResponse.json(
       { error: "Failed to initiate payment." },
       { status: 500 }

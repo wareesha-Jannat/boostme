@@ -13,9 +13,9 @@ export default async function page() {
     <>
       <div className="flex items-center justify-center h-[100dvh] bg-aurora">
         <div className="text-white p-8 rounded-2xl  shadow-cyan-800 shadow-md bg-transparent w-[80vw] md:w-[50vw]  space-y-3 max-w-4xl ">
-          <div className="flex justify-center items-center gap-2">
-            <h1 className="logo text-fluid-md">
-              SignUp to Boost<span className="text-white">Me</span>
+          <div className="flex justify-center items-center gap-2  mt-4">
+            <h1 className="logo text-fluid-lg ">
+              Sign<span className="text-white">Up</span>
             </h1>
             <Image src="/rocket.png" alt="" height={24} width={24} />
           </div>

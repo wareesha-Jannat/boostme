@@ -108,7 +108,7 @@ export const updateProfile = async (formData) => {
     revalidatePath("/dashboard");
     return { success: true, data: updated };
   } catch (error) {
-    console.error("Error in updateProfile:", error);
+   
     return { success: false, error: "Failed to update profile" };
   }
 };

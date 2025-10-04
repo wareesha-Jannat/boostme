@@ -7,7 +7,7 @@ export function useSubmitCreationMutation() {
   const queryClient = useQueryClient();
   const { data: session } = useSession();
 
-  const userId = session.user.id;
+  const userId = session?.user?.id;
 
   const mutation = useMutation({
     mutationFn: SubmitCreation,
@@ -45,7 +45,7 @@ export function useUpdateCreationMutation() {
   const queryClient = useQueryClient();
   const { data: session } = useSession();
 
-  const userId = session.user.id;
+  const userId = session?.user?.id;
 
   const mutation2 = useMutation({
     mutationFn: SubmitCreation,
@@ -84,7 +84,7 @@ export function useDeleteCreationMutation() {
   const queryClient = useQueryClient();
   const { data: session } = useSession();
 
-  const userId = session.user.id;
+  const userId = session?.user?.id;
 
   const mutation = useMutation({
     mutationFn: DeleteCreation,

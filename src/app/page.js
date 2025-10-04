@@ -13,36 +13,33 @@ export default async function Home() {
 
   return (
     <>
-      <div className="bg-aurora min-h-[100dvh]">
-        <Navbar />
-        <main className=" pt-15 max-w-7xl mx-auto ">
-          <AnimatedSection>
-            <HeroSection data={data?.profiles} />
-          </AnimatedSection>
+      <main className=" pt-15 max-w-7xl mx-auto ">
+        <AnimatedSection>
+          <HeroSection data={data?.profiles} />
+        </AnimatedSection>
 
-          <div className="divider bg-white h-0.5 opacity-20"></div>
-          <AnimatedSection>
-            <HowItWorks />
-          </AnimatedSection>
+        <div className="divider bg-white h-0.5 opacity-20"></div>
+        <AnimatedSection>
+          <HowItWorks />
+        </AnimatedSection>
 
-          <div className="divider bg-white h-0.5 opacity-20"></div>
+        <div className="divider bg-white h-0.5 opacity-20"></div>
 
-          <AnimatedSection>
-            <FeaturedCreators creators={data.profiles.slice(0, 6)} />
-          </AnimatedSection>
+        <AnimatedSection>
+          <FeaturedCreators creators={data.profiles.slice(0, 6)} />
+        </AnimatedSection>
 
-          <div className="divider bg-white h-0.5 opacity-20"></div>
-          <AnimatedSection>
-            <WhyBoostMe />
-          </AnimatedSection>
+        <div className="divider bg-white h-0.5 opacity-20"></div>
+        <AnimatedSection>
+          <WhyBoostMe />
+        </AnimatedSection>
 
-          <div className="divider bg-white h-0.5 opacity-20"></div>
-          <AnimatedSection>
-            <CTASection />
-          </AnimatedSection>
-        </main>
-        <Footer />
-      </div>
+        <div className="divider bg-white h-0.5 opacity-20"></div>
+        <AnimatedSection>
+          <CTASection />
+        </AnimatedSection>
+      </main>
+      <Footer />
     </>
   );
 }
