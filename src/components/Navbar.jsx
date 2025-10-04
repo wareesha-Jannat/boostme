@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
+import DeleteAccount from "@/app/dashboard/DeleteAccount";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
@@ -111,6 +112,9 @@ const Navbar = () => {
                       >
                         Sign out
                       </button>
+                    </li>
+                    <li>
+                      <DeleteAccount userId={session.user?._id} />
                     </li>
                   </ul>
                 </div>

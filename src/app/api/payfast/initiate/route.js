@@ -34,7 +34,7 @@ export async function POST(req) {
         accountHolder.username
       )}`, //urls for success and faliure page
       //   cancel_url: 'http://localhost:3000/payment/failure',
-      notify_url: `${NEXT_PUBLIC_BASE_URL}/api/payfast/ipn`, // url to handle process after request completion
+      notify_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/payfast/ipn`, // url to handle process after request completion
       name_first: name,
       email_address: "test@example.com",
       amount,
@@ -47,7 +47,6 @@ export async function POST(req) {
     const redirectUrl = `https://sandbox.payfast.co.za/eng/process?${query}`;
     return NextResponse.json({ url: redirectUrl });
   } catch (error) {
-   
     return NextResponse.json(
       { error: "Failed to initiate payment." },
       { status: 500 }

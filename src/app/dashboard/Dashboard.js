@@ -63,7 +63,7 @@ const Dashboard = ({ user }) => {
 
   return (
     <>
-      <DeleteAccount userId={user._id} />
+      
       <div className=" text-white  w-[80%] md:w-[60vw] py-7 mx-auto space-y-3 max-w-5xl bg-transparent border-2 border-gray-800 p-8 mt-8  rounded-2xl shadow-cyan-800 shadow-md">
         <h2 className="text-center font-bold text-2xl">
           Welcome to your Dashboard

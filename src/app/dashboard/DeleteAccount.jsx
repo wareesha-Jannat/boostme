@@ -25,7 +25,7 @@ const DeleteAccount = ({ userId }) => {
   return (
     <button
       onClick={handleDelete}
-      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 ml-auto"
+      className="text-white font-bold px-4 py-2 rounded-md hover:bg-red-700 ml-auto"
     >
       Delete Account
     </button>

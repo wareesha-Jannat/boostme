@@ -31,11 +31,15 @@ Creators showcase their work, and fans explore, connect, and provide support.
 
 ---
 
-## 🖼️ Screenshots  
+## 🖼️ Screenshots
 
-### Homepage  
+### Homepage
+
 ![BoostMe Homepage](./public/screenshots/homepage.PNG)
-
+![BoostMe Login](./public/screenshots/login-page.PNG)
+![BoostMe Dashboard](./public/screenshots/dashboard.PNG)
+![BoostMe User page](./public/screenshots/user-page.PNG)
+![BoostMe Payment done](./public/screenshots/payment-done.PNG)
 
 ## 🛠️ Tech Stack
 
@@ -64,25 +68,22 @@ npm install
 ```
 
 3. Start the development server:
- ```bash
- npm run dev
+
+```bash
+npm run dev
 ```
 
 ## Test Account
+
 Use the following credentials to explore the app :
 
 - **Username:** johndoe@example.com
 - **Password:** test@12345
 
-
-
 ## Live Demo
-[Visit the live site](https://echo-ashy.vercel.app)
 
-
-
+[Visit the live site](https://boostme-henna.vercel.app)
 
 ## Credits
 
 -<a href="https://storyset.com/">Illustrations by Storyset</a>
-
