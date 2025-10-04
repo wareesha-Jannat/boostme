@@ -51,7 +51,7 @@ const AllCreations = ({ showActions, userId }) => {
   return (
     <>
       <div className="flex flex-col my-5 mx-auto ">
-        <div className=" grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[350px] ">
+        <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 auto-rows-[350px] ">
           {creations.length > 0 ? (
             creations.map((creation) => (
               <Creation

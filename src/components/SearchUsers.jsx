@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 const SearchUsers = ({ users }) => {
   const router = useRouter();
@@ -51,7 +52,7 @@ const SearchUsers = ({ users }) => {
               className="flex items-center gap-4 p-2 cursor-pointer hover:bg-gray-700"
             >
               <Image
-                src={u.profilepic}
+                src={u.profilepic || "/avatar-placeholder.png"}
                 alt="profilepic"
                 className=" rounded-full"
                 height={40}
