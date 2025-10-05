@@ -47,7 +47,6 @@ export async function signup(credentials) {
       success: true,
     };
   } catch (error) {
-  
     return { error: "Internal server error" };
   }
 }
@@ -95,12 +94,12 @@ export const updateProfile = async (formData) => {
 
     // Remove email if present (we don't want to allow update)
 
-   
     // Update user in DB
 
     const updated = await User.findByIdAndUpdate(userId, formValues, {
       new: true,
-    }).select("-createdAt -updatedAt -__v")
+    })
+      .select("-createdAt -updatedAt -__v")
       .lean();
 
     updated._id = updated._id.toString();
@@ -108,7 +107,6 @@ export const updateProfile = async (formData) => {
     revalidatePath("/dashboard");
     return { success: true, data: updated };
   } catch (error) {
-   
     return { success: false, error: "Failed to update profile" };
   }
 };
@@ -116,7 +114,7 @@ export const updateProfile = async (formData) => {
 export async function DeleteUser(userId) {
   try {
     const session = await auth();
-    if (!session || session.user.id !== userId) {
+    if (!session || session.user._id !== userId) {
       return {
         error: "unauthorized",
       };
@@ -148,16 +146,14 @@ export async function DeleteUser(userId) {
     await User.findByIdAndDelete(userId);
     await Payment.deleteMany({ to_user: userId });
     await Creation.deleteMany({ creatorId: userId });
-   
+
     if (publicIds.length > 0) {
       await cloudinary.api.delete_resources(publicIds);
-     
     }
     return {
       success: true,
     };
   } catch (error) {
-  
     return {
       error: "Internal server error",
     };
