@@ -30,7 +30,7 @@ const FeaturedCreators = ({ creators }) => {
               className="inline-flex items-center gap-1 text-purple-400 hover:text-purple-300 text-sm font-medium self-start mt-auto"
             >
               {" "}
-              View Project <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+              View Profile <ArrowTopRightOnSquareIcon className="w-4 h-4" />
             </a>
           </div>
         ))}
