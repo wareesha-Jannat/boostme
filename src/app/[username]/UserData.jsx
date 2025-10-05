@@ -34,7 +34,7 @@ const UserData = ({ user }) => {
         <h3 className="bold text-xl "> @{user.username}</h3>
         <ReadMore text={user?.bio || "No bio yet"} />
         <p className="text-sm text-slate-400">
-          lets help {user?.username} get a chai
+          let&apos;s help {user?.username} get boosted
         </p>
         <PaymentsInfo userId={user?._id.toString()} />
       </div>
