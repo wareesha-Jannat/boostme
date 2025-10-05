@@ -12,6 +12,7 @@ const Navbar = () => {
   const { data: session, status } = useSession();
   const [showDropdown, setshowDropdown] = useState(false);
   const router = useRouter();
+  
 
   const queryClient = useQueryClient();
 
@@ -61,7 +62,7 @@ const Navbar = () => {
                     }, 3000)
                   }
                 >
-                  {session?.user?.name || session.user.username}
+                  {session?.user?.name || session?.user.username}
                   <svg
                     className="w-2.5 h-2.5 ms-3"
                     aria-hidden="true"
@@ -91,7 +92,7 @@ const Navbar = () => {
                   >
                     <li>
                       <Link
-                        href={`/${session.user.username}`}
+                        href={`/${session?.user.username}`}
                         className="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-700 dark:hover:text-white "
                       >
                         My Page
@@ -114,7 +115,7 @@ const Navbar = () => {
                       </button>
                     </li>
                     <li>
-                      <DeleteAccount userId={session.user?._id} />
+                      <DeleteAccount userId={session?.user?.id} />
                     </li>
                   </ul>
                 </div>

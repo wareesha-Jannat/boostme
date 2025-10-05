@@ -114,14 +114,16 @@ export const updateProfile = async (formData) => {
 export async function DeleteUser(userId) {
   try {
     const session = await auth();
-    if (!session || session.user._id !== userId) {
+    if (!session || session?.user?.id !== userId) {
       return {
         error: "unauthorized",
       };
     }
     await DBConnect();
     const publicIds = [];
+
     const user = await User.findById(userId);
+
     if (!user) {
       return {
         error: "user not found",
@@ -150,6 +152,7 @@ export async function DeleteUser(userId) {
     if (publicIds.length > 0) {
       await cloudinary.api.delete_resources(publicIds);
     }
+
     return {
       success: true,
     };
