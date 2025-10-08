@@ -9,6 +9,7 @@ import { profileSchema } from "@/lib/validation";
 import ImageInput from "@/components/ImageInput";
 import DeleteAccount from "./DeleteAccount";
 import Image from "next/image";
+import Loader from "@/components/Loader";
 
 const Dashboard = ({ user }) => {
   const [showSecret, setShowSecret] = useState(false);
@@ -56,14 +57,12 @@ const Dashboard = ({ user }) => {
         throw new Error(res.error);
       }
     } catch (error) {
-     
       toast.error("Could not update profile, try again");
     }
   };
 
   return (
     <>
-      
       <div className=" text-white  w-[80%] md:w-[60vw] py-7 mx-auto space-y-3 max-w-5xl bg-transparent border-2 border-gray-800 p-8 mt-8  rounded-2xl shadow-cyan-800 shadow-md">
         <h2 className="text-center font-bold text-2xl">
           Welcome to your Dashboard
@@ -174,9 +173,15 @@ const Dashboard = ({ user }) => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="btn w-full mt-4"
+            className="btn w-full mt-4 flex items-center justify-center gap-2"
           >
-            {isSubmitting ? "Saving" : "Save"}
+            {isSubmitting ? (
+              <>
+                <Loader /> Save
+              </>
+            ) : (
+              "Save"
+            )}
           </button>
         </form>
       </div>

@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpschema } from "@/lib/validation";
 import Image from "next/image";
+import Loader from "@/components/Loader";
 
 const SignUpForm = () => {
   const router = useRouter();
@@ -26,7 +27,6 @@ const SignUpForm = () => {
   });
 
   async function onSubmit(values) {
-    
     try {
       const data = await signup(values);
       if (data.error) {
@@ -96,10 +96,16 @@ const SignUpForm = () => {
         </div>
         <button
           type="submit"
-          className="btn w-full mt-4 "
+          className="btn w-full mt-4 flex items-center justify-center gap-2"
           disabled={isSubmitting}
         >
-          Sign Up
+          {isSubmitting ? (
+            <>
+              <Loader /> Signup
+            </>
+          ) : (
+            "Signup"
+          )}
         </button>
       </form>
     </>

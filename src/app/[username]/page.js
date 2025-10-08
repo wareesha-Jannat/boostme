@@ -31,7 +31,7 @@ export default async function Page({ params }) {
 
           <div className="w-[80%]  pb-7 text-white flex-col flex md:flex-row mx-auto  gap-5">
             {/* All payments */}
-            <div className=" bg-transparent md:w-[50%]  shadow-cyan-800 shadow-md p-7  rounded-lg">
+            <div className=" bg-transparent md:w-[50%]  shadow-cyan-800 shadow-md p-3  rounded-lg">
               <h2 className="font-bold mb-5 text-slate-400 text-[22px] ">
                 Payments
               </h2>
@@ -40,7 +40,7 @@ export default async function Page({ params }) {
               </div>
             </div>
             {/* Payment */}
-            <div className=" bg-transparent md:w-[50%]  shadow-cyan-800 shadow-md  p-7 rounded-lg ">
+            <div className=" bg-transparent md:w-[50%]  shadow-cyan-800 shadow-md  p-3 rounded-lg ">
               <h2 className="font-bold mb-5 text-slate-400 text-[22px] ">
                 Make a payment
               </h2>
@@ -48,7 +48,7 @@ export default async function Page({ params }) {
             </div>
           </div>
           <div className="flex flex-col gap-5 w-[80%] mx-auto ">
-            <h3 className="bg-gray-900 text-white text-fluid-md text-center py-2 mb-3 mt-9 rounded-2xl">
+            <h3 className="bg-gray-900 text-white text-fluid-lg text-center py-2 mb-3 mt-9 rounded-2xl">
               User Creations
             </h3>
             <AllCreations showActions={false} userId={user?._id.toString()} />

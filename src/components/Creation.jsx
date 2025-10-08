@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const Creation = ({ creation, onEdit, onDelete, showActions }) => {
   return (
-    <div className="bg-gray-900 rounded-2xl w-[320px]   overflow-hidden  scroll-stable shadow-md hover:shadow-lg flex flex-col relative hover:scale-105 transform transition-transform duration-500 ">
+    <div className="bg-gray-900 rounded-2xl w-[300px]   overflow-hidden  scroll-stable shadow-md hover:shadow-lg flex flex-col relative hover:scale-105 transform transition-transform duration-500 ">
       {showActions && (
         <div className="absolute top-2 right-2 flex gap-2 z-20">
           <button
@@ -55,7 +55,7 @@ const Creation = ({ creation, onEdit, onDelete, showActions }) => {
 
         {/* Description */}
         <div className="text-gray-300">
-          <ReadMore text={creation.description} />
+          <ReadMore text={creation.description} maxLength={80} />
         </div>
 
         {/* Link */}

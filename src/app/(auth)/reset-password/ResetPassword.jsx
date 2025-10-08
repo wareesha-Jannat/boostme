@@ -7,6 +7,7 @@ import { ChangePassword } from "@/actions/authentication";
 import { useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
 import Image from "next/image";
+import Loader from "@/components/Loader";
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -97,10 +98,16 @@ const ResetPassword = () => {
         </div>
         <button
           type="submit"
-          className="btn w-full mt-4 "
+          className="btn w-full mt-4 flex items-center justify-center gap-2 "
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Saving" : "Save"}
+          {isSubmitting ? (
+            <>
+              <Loader /> Save
+            </>
+          ) : (
+            "Save"
+          )}
         </button>
       </form>
     </>

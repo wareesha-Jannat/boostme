@@ -1,4 +1,5 @@
 "use client";
+import Loader from "@/components/Loader";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -8,6 +9,7 @@ const PaymentForm = ({ userId }) => {
     message: "",
     amount: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setPaymentForm({ ...paymentForm, [e.target.name]: e.target.value });
@@ -19,6 +21,7 @@ const PaymentForm = ({ userId }) => {
       return;
     }
     e.preventDefault();
+    setIsSubmitting(true);
     let form = {
       ...paymentForm,
       toUser: userId,
@@ -29,6 +32,7 @@ const PaymentForm = ({ userId }) => {
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(form),
       });
+      setIsSubmitting(false);
       if (!res.ok) {
         throw new Error("Something went wrong while initiating payment.");
       }
@@ -79,8 +83,18 @@ const PaymentForm = ({ userId }) => {
             className="rounded-lg border-2 border-slate-400 w-full p-3 "
           />
         </div>
-        <button type="submit" className="btn w-full">
-          Pay
+        <button
+          type="submit"
+          className="btn w-full flex items-center justify-center gap-2"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <>
+              <Loader /> Pay
+            </>
+          ) : (
+            "Pay"
+          )}
         </button>
         <div className=" flex flex-wrap gap-4">
           <span

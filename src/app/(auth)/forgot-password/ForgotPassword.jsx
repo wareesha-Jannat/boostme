@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ResetPasswordLink } from "@/actions/authentication";
 import { toast } from "react-toastify";
+import Loader from "@/components/Loader";
 
 const ForgotPassword = () => {
   const {
@@ -20,7 +21,6 @@ const ForgotPassword = () => {
   });
 
   async function onSubmit(values) {
-   
     try {
       const data = await ResetPasswordLink(values);
       if (data.error) {
@@ -30,7 +30,6 @@ const ForgotPassword = () => {
         reset();
       }
     } catch (error) {
-     
       toast.error("something went wrong");
     }
   }
@@ -52,10 +51,17 @@ const ForgotPassword = () => {
         </div>
         <button
           type="submit"
-          className="btn w-full mt-4 "
+          className="btn w-full mt-4 flex items-center justify-center gap-2 "
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Sending" : "Send Link"}
+          {isSubmitting ? (
+            <>
+              <Loader />
+              Send Link
+            </>
+          ) : (
+            "Send Link"
+          )}
         </button>
       </form>
     </>

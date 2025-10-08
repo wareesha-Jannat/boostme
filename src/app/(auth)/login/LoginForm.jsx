@@ -5,14 +5,17 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Image from "next/image";
 import { getSession } from "next-auth/react";
+import Loader from "@/components/Loader";
 
 const LoginForm = () => {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsSubmitting(true);
       const formData = new FormData(e.currentTarget);
       const response = await CredentialsLogin(formData);
 
@@ -22,8 +25,8 @@ const LoginForm = () => {
         await getSession();
         router.push("/dashboard");
       }
+      setIsSubmitting(false);
     } catch (error) {
-    
       toast.error("something went wrong");
     }
   };
@@ -57,9 +60,7 @@ const LoginForm = () => {
             </button>
           </div>
         </div>
-        <button type="submit" className="btn w-full mt-4 ">
-          Login
-        </button>
+      
       </form>
     </>
   );

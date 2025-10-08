@@ -10,6 +10,7 @@ import {
   useSubmitCreationMutation,
   useUpdateCreationMutation,
 } from "@/app/dashboard/mutations";
+import Loader from "./Loader";
 
 const CreationDialog = ({ cancel, mode = "add", data = null }) => {
   const { data: session } = useSession();
@@ -152,8 +153,17 @@ const CreationDialog = ({ cancel, mode = "add", data = null }) => {
                 <p className="text-red-500">{errors.link.message}</p>
               )}
             </div>
-            <button className="btn w-20" type="submit">
-              {mutation.isPending ? "Saving" : "Save"}
+            <button
+              className="btn w-20 flex items-center justify-center gap-2"
+              type="submit"
+            >
+              {mutation.isPending ? (
+                <>
+                  <Loader /> Save
+                </>
+              ) : (
+                "Save"
+              )}
             </button>
           </form>
         </div>
