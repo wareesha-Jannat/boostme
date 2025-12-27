@@ -3,9 +3,9 @@ import React from "react";
 
 const HowItWorks = () => {
   return (
-    <section className="text-white py-16 flex flex-col items-center justify-center gap-8">
-      <div className=" mx-auto px-6 text-center">
-        <h2 className="text-fluid-lg font-bold mb-10">
+    <section className="text-white py-26 ">
+      <div className="  flex flex-col items-center justify-center gap-18">
+        <h2 className="text-fluid-lg font-bold ">
           How <span className="text-purple-400">it</span> Works
         </h2>
 

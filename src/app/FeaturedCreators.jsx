@@ -4,7 +4,7 @@ import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
 const FeaturedCreators = ({ creators }) => {
   return (
-    <section className="text-white py-16 flex flex-col items-center gap-8">
+    <section className="text-white py-26 flex flex-col items-center gap-18">
       <h3 className="text-3xl font-bold">Featured Creators</h3>
 
       <div className="flex items-center justify-center flex-wrap gap-12 w-full  p-4">

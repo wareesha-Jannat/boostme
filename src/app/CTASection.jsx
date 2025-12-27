@@ -3,7 +3,7 @@ import CTAButtons from "./CTAButtons";
 
 const CTASection = () => {
   return (
-    <section className=" flex flex-col items-center justify-center text-white gap-4 py-16 px-3">
+    <section className=" flex flex-col items-center justify-center text-white gap-4 py-26 px-3">
       {/* Heading */}
       <h2 className="text-fluid-lg font-bold mb-4 text-center">
         Ready to Boost Your Favorite Creators?

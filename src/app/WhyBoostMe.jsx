@@ -2,7 +2,7 @@ import React from "react";
 
 const WhyBoostMe = () => {
   return (
-    <section className="text-white py-16 flex flex-col items-center justify-center gap-8 ">
+    <section className="text-white py-26 flex flex-col items-center justify-center gap-18 ">
       {/* Why BoostMe Section */}
 
       <div className=" mx-auto px-6 text-center">

@@ -60,7 +60,19 @@ const LoginForm = () => {
             </button>
           </div>
         </div>
-      
+        <button
+          type="submit"
+          className="btn w-full mt-4 flex items-center justify-center gap-2"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <>
+              <Loader /> Login
+            </>
+          ) : (
+            "Login"
+          )}
+        </button>
       </form>
     </>
   );

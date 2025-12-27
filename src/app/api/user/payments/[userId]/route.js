@@ -3,6 +3,8 @@ import Payment from "@/models/payment";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
+
+
 export async function GET(req, { params }) {
   try {
     const { userId } = await params;

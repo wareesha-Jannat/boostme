@@ -66,9 +66,9 @@ const AllPayments = ({ userId }) => {
             );
           })
         ) : (
-          <li className="flex gap-2 text-sm">
+          <li className="flex gap-2 justify-center text-sm">
             {" "}
-            <span className="bold text-[15px]"> No payment yet </span>{" "}
+            <span className="bold text-[15px] text-gray-500"> No payment yet </span>{" "}
           </li>
         )}
       </ul>
