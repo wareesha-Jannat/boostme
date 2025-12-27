@@ -1,4 +1,4 @@
-import { getUsers } from "@/lib/getUsers";
+import { getUsers } from "@/lib/utils";
 
 export default async function sitemap() {
   const baseUrl = "https://boostme-henna.vercel.app/";
