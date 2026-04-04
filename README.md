@@ -93,12 +93,6 @@ npm install
 npm run dev
 ```
 
-## Test Account
-
-Use the following credentials to explore the app :
-
-- **Username:** johndoe@example.com
-- **Password:** test@12345
 
 ## Live Demo
 
