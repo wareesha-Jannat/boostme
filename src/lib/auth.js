@@ -21,9 +21,7 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials) {
-        
         if (credentials === null) {
-      
           throw new CustomError("Please Provide Credentials");
         }
         try {
@@ -31,18 +29,16 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
           const user = await User.findOne({ email: credentials.email })
             .select("password name email ")
             .lean();
-       
 
           if (user) {
             if (!user.password) {
-             
               throw new CustomError(
-                "You signed In through google please try that method"
+                "You signed In through google please try that method",
               );
             }
             const isMatch = await bcrypt.compare(
               credentials.password,
-              user.password
+              user.password,
             );
             if (isMatch) {
               return {
@@ -51,15 +47,12 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
                 email: user.email,
               };
             } else {
-             
               throw new CustomError("Invalid Credentials");
             }
           } else {
-            
             throw new CustomError("User not found");
           }
         } catch (error) {
-        
           throw new CustomError(error.message);
         }
       },
@@ -87,11 +80,11 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
       try {
         await DBConnect();
         const dbUser = await User.findOne({ email: session.user.email }).select(
-          "username "
+          "username ",
         );
         if (dbUser) {
-          (session.user.username = dbUser.username),
-            (session.user.id = dbUser._id.toString());
+          ((session.user.username = dbUser.username),
+            (session.user.id = dbUser._id.toString()));
         }
         return session;
       } catch (error) {

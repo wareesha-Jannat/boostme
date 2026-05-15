@@ -1,6 +1,5 @@
 import { getUsers } from "@/lib/utils";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import FeaturedCreators from "./FeaturedCreators";
 import HeroSection from "./HeroSection";
 import HowItWorks from "./HowItWorks";

@@ -7,8 +7,11 @@ import ResetPasswordToken from "@/models/resetPasswordToken";
 import { randomBytes } from "crypto";
 import crypto from "crypto";
 import { addMinutes } from "date-fns";
-import nodemailer from "nodemailer";
+
 import bcrypt from "bcrypt";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function Login() {
   await signIn("google", { redirectTo: "/dashboard" });
@@ -59,23 +62,22 @@ export async function ResetPasswordLink(values) {
       expiresAt,
     });
     const resetLink = `${process.env.NEXT_PUBLIC_BASE_URL}/reset-password?token=${token}`;
-
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: email,
+    // Send email via Resend
+    const { error } = await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: "wjannat309@gmail.com",
       subject: "Reset your Password",
-      html: `<p>Click the link below to reset your password:</p>
-           <a href="${resetLink}">${resetLink}</a>
-           <p>This link is valid for 15 minutes.</p>`,
+      html: `
+        <p>You requested a password reset.</p>
+        <p>Click below to reset your password:</p>
+        <a href="${resetLink}">Reset Password</a>
+        <p>This link will expire in 15 minutes.</p>
+      `,
     });
+
+    if (error) {
+      return { error: "Failed to send email. Try again later." };
+    }
 
     return {
       success: true,
@@ -116,7 +118,7 @@ export async function ChangePassword(values, token) {
 
     await User.updateOne(
       { email: existingToken.email },
-      { $set: { password: hashedPassword } }
+      { $set: { password: hashedPassword } },
     );
 
     await existingToken.deleteOne();
